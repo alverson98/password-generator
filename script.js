@@ -43,43 +43,21 @@ function generatePassword() {
     var upperChoice = confirm(
       "Do you want uppercase letters? Click 'OK' for yes, and 'Cancel' for no."
     );
-  }
-
-  if (upperChoice) {
-    var yesUpperCase = true;
-  } else {
-    var noUpperCase = false;
-  }
+    }
 
   var lowerChoice = confirm(
     "Do you want lowercase letters? Click 'OK' for yes, and 'Cancel' for no."
   );
 
-  if (lowerChoice) {
-    var yesLowerCase = true;
-  } else {
-    var noLowerCase = false;
-  }
 
   var numberChoice = confirm(
     "Do you want any numbers? Click 'OK' for yes, and 'Cancel' for no."
   );
 
-  if (numberChoice) {
-    var yesNumber = true;
-  } else {
-    var noNumber = false;
-  }
 
   var specialChoice = confirm(
     "Do you want special characters? Click 'OK' for yes, and 'Cancel' for no."
   );
-
-  if (specialChoice) {
-    var yesSpecial = true;
-  } else {
-    var noSpecial = false;
-  }
 
 if (upperChoice === true || lowerChoice === true || numberChoice === true || specialChoice === true) {
   createPassword();
@@ -89,7 +67,8 @@ characterNumber();
 }
 
 function createPassword() {
-
+ 
+if ()
 }
   
 }
