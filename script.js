@@ -21,6 +21,14 @@ var characters = {
 
 
 function generatePassword() {
+  prompt("How many characters do you want? Choose between 8-128.")
+
+  confirm("Do you want uppercase letters? Click 'OK' for yes, and 'Cancel' for no.")
+
+  confirm("Do you want lowercase letters? Click 'OK' for yes, and 'Cancel' for no.")
+
+  confirm("Do you want special characters? Click 'OK' for yes, and 'Cancel' for no.")
+  
   // prompt user for length
   //prompt user to confirm char choices
   // generate password using inputs
