@@ -40,11 +40,13 @@ function generatePassword() {
     }
   }
   characterNumber();
- 
-  // User prompts if they wany uppercase, lowercase, number, and/or special characters
-  var upperChoice = confirm(
-    "Do you want uppercase letters? Click 'OK' for yes, and 'Cancel' for no."
-  );
+
+  function upperChoice() {
+    // User prompts if they wany uppercase, lowercase, number, and/or special characters
+    var upperChoice = confirm(
+      "Do you want uppercase letters? Click 'OK' for yes, and 'Cancel' for no."
+    );
+  }
 
   var lowerChoice = confirm(
     "Do you want lowercase letters? Click 'OK' for yes, and 'Cancel' for no."
@@ -71,10 +73,10 @@ function generatePassword() {
     characterNumber();
   }
 
- 
+  // Empty array to create new array with requested character types
+  var requestChar = [];
+
   function createPassword() {
-     // Empty array to create new array with requested character types
-     var requestChar = [];
     if (upperChoice) {
       requestChar = requestChar.concat(characterOptions.upperCase);
     }
@@ -88,5 +90,14 @@ function generatePassword() {
       requestChar = requestChar.concat(characterOptions.special);
     }
     console.log(requestChar);
+
+    //Creating an array based on number of characters user selected
+
+    //Adding the random generator to select element within the new requested character array
+    for (i = 0; i < charCount; i++) {
+      var passwordArray = passwordArray.push(
+        requestChar[Math.floor(Math.random() * requestChar.length)]
+      );
+    }
   }
 }
