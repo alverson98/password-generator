@@ -12,12 +12,10 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-var characterOptions = {
-  upperCase: ["ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")],
-  lowerCase: ["abcdefghijklmnopqrstuvwxyz".split("")],
-  numbers: ["0123456789".split("")],
-  special: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
-};
+var upperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")];
+var lowerCase = ["abcdefghijklmnopqrstuvwxyz".split("")];
+var numbers = ["0123456789".split("")];
+var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
 
 function generatePassword() {
   // Selecting number of characters
@@ -30,7 +28,7 @@ function generatePassword() {
       alert("Please choose a number between 8 and 128.");
       characterNumber();
     } else if (charCount >= 8 && charCount <= 128) {
-      upperChoice();
+      charChoice();
       return true;
     } else if (charCount === null) {
       window.close();
@@ -41,63 +39,63 @@ function generatePassword() {
   }
   characterNumber();
 
-  function upperChoice() {
+  function charChoice() {
     // User prompts if they wany uppercase, lowercase, number, and/or special characters
     var upperChoice = confirm(
       "Do you want uppercase letters? Click 'OK' for yes, and 'Cancel' for no."
     );
-  }
 
-  var lowerChoice = confirm(
-    "Do you want lowercase letters? Click 'OK' for yes, and 'Cancel' for no."
-  );
+    var lowerChoice = confirm(
+      "Do you want lowercase letters? Click 'OK' for yes, and 'Cancel' for no."
+    );
 
-  var numberChoice = confirm(
-    "Do you want any numbers? Click 'OK' for yes, and 'Cancel' for no."
-  );
+    var numberChoice = confirm(
+      "Do you want any numbers? Click 'OK' for yes, and 'Cancel' for no."
+    );
 
-  var specialChoice = confirm(
-    "Do you want special characters? Click 'OK' for yes, and 'Cancel' for no."
-  );
+    var specialChoice = confirm(
+      "Do you want special characters? Click 'OK' for yes, and 'Cancel' for no."
+    );
 
-  // Forcing user to choose at least one character type
-  if (
-    upperChoice === true ||
-    lowerChoice === true ||
-    numberChoice === true ||
-    specialChoice === true
-  ) {
-    createPassword();
-  } else {
-    alert("You must select at least one character type. Please try again.");
-    characterNumber();
-  }
-
-  // Empty array to create new array with requested character types
-  var requestChar = [];
-
-  function createPassword() {
-    if (upperChoice) {
-      requestChar = requestChar.concat(characterOptions.upperCase);
+    // Forcing user to choose at least one character type
+    if (
+      upperChoice === true ||
+      lowerChoice === true ||
+      numberChoice === true ||
+      specialChoice === true
+    ) {
+      createPassword();
+    } else {
+      alert("You must select at least one character type. Please try again.");
+      characterNumber();
     }
-    if (lowerChoice) {
-      requestChar = requestChar.concat(characterOptions.lowerCase);
-    }
-    if (numberChoice) {
-      requestChar = requestChar.concat(characterOptions.numbers);
-    }
-    if (specialChoice) {
-      requestChar = requestChar.concat(characterOptions.special);
-    }
-    console.log(requestChar);
+    // Empty array to create new array with requested character types
 
-    //Creating an array based on number of characters user selected
+    function createPassword() {
+      // var requestChar = [];
 
-    //Adding the random generator to select element within the new requested character array
-    for (i = 0; i < charCount; i++) {
-      var passwordArray = passwordArray.push(
-        requestChar[Math.floor(Math.random() * requestChar.length)]
-      );
+      if (upperChoice) {
+        var requestChar = requestChar.concat(upperCase);
+      }
+      if (lowerChoice) {
+        var requestChar = requestChar.concat(lowerCase);
+      }
+      if (numberChoice) {
+        var requestChar = requestChar.concat(numbers);
+      }
+      if (specialChoice) {
+        var requestChar = requestChar.concat(special);
+
+        //Creating an array based on number of characters user selected
+
+        //Adding the random generator to select element within the new requested character array
+        for (i = 0; i < charCount; i++) {
+          var passwordArray = passwordArray.push(
+            requestChar[Math.floor(Math.random() * requestChar.length)]
+          );
+        }
+        console.log(passwordArray);
+      }
     }
   }
 }
