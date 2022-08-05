@@ -19,19 +19,25 @@ var characterOptions = {
 };
 
 function generatePassword() {
-  var charCount = prompt(
-    "How many characters do you want? Choose between 8-128."
-  );
+  function characterNumber() {
+    var charCount = prompt(
+      "How many characters do you want? Choose between 8-128."
+    );
 
-  if (charCount < 8 || charCount > 128 || charCount === "") {
-    alert("Please choose a number between 8 and 128.");
-  } else if (charCount >= 8 && charCount <= 128) {
-    upperChoice();
-  } else if (charCount === null) {
-    window.close();
-  } else {
-    alert("Please choose a number between 8 and 128.");
+    if (charCount < 8 || charCount > 128 || charCount === "") {
+      alert("Please choose a number between 8 and 128.");
+      characterNumber();
+    } else if (charCount >= 8 && charCount <= 128) {
+      upperChoice();
+      return true;
+    } else if (charCount === null) {
+      window.close();
+    } else {
+      alert("Please choose a number between 8 and 128.");
+      characterNumber();
+    }
   }
+  characterNumber();
 
   function upperChoice() {
     var upperChoice = confirm(
@@ -58,7 +64,7 @@ function generatePassword() {
   var numberChoice = confirm(
     "Do you want any numbers? Click 'OK' for yes, and 'Cancel' for no."
   );
-  
+
   if (numberChoice) {
     var yesNumber = true;
   } else {
@@ -75,6 +81,15 @@ function generatePassword() {
     var noSpecial = false;
   }
 
-  // generate password using inputs
-  // return grnerated password
+if (upperChoice === true || lowerChoice === true || numberChoice === true || specialChoice === true) {
+  createPassword();
+} else {
+  alert("You must select at least one character type option. Please try again.");
+characterNumber();
+}
+
+function createPassword() {
+
+}
+  
 }
