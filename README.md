@@ -44,11 +44,9 @@ This application is used to generate a random password based on the criteria tha
 
 ### Links
 
-<!-- Add links -->
+[Link](https://alverson98.github.io/password-generator/) to deployed website.
 
-[Link]() to deployed website.
-
-[Link]() to code repository.
+[Link](https://github.com/alverson98/password-generator) to code repository.
 
 ## Credits
 
