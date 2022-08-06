@@ -4,18 +4,18 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  // var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  // passwordText.value = password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-var upperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")];
-var lowerCase = ["abcdefghijklmnopqrstuvwxyz".split("")];
-var numbers = ["0123456789".split("")];
-var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var numbers = "0123456789";
+var special = "!@#$%^&*()";
 
 function generatePassword() {
   // Selecting number of characters
@@ -28,10 +28,9 @@ function generatePassword() {
       alert("Please choose a number between 8 and 128.");
       characterNumber();
     } else if (charCount >= 8 && charCount <= 128) {
-      charChoice();
-      return true;
+      charChoice(charCount);
     } else if (charCount === null) {
-      window.close();
+      return;
     } else {
       alert("Please choose a number between 8 and 128.");
       characterNumber();
@@ -39,7 +38,7 @@ function generatePassword() {
   }
   characterNumber();
 
-  function charChoice() {
+  function charChoice(number) {
     // User prompts if they wany uppercase, lowercase, number, and/or special characters
     var upperChoice = confirm(
       "Do you want uppercase letters? Click 'OK' for yes, and 'Cancel' for no."
@@ -64,38 +63,45 @@ function generatePassword() {
       numberChoice === true ||
       specialChoice === true
     ) {
-      createPassword();
+      createPassword(number);
     } else {
       alert("You must select at least one character type. Please try again.");
       characterNumber();
     }
     // Empty array to create new array with requested character types
 
-    function createPassword() {
-      // var requestChar = [];
+    function createPassword(number_base) {
+      var requestChar = "";
+      console.log(number_base);
 
       if (upperChoice) {
-        var requestChar = requestChar.concat(upperCase);
+        var requestChar = requestChar + upperCase;
+        console.log(requestChar);
       }
       if (lowerChoice) {
-        var requestChar = requestChar.concat(lowerCase);
+        var requestChar = requestChar + lowerCase;
+        console.log(requestChar);
       }
       if (numberChoice) {
-        var requestChar = requestChar.concat(numbers);
+        var requestChar = requestChar + numbers;
+        console.log(requestChar);
       }
       if (specialChoice) {
-        var requestChar = requestChar.concat(special);
-
-        //Creating an array based on number of characters user selected
-
-        //Adding the random generator to select element within the new requested character array
-        for (i = 0; i < charCount; i++) {
-          var passwordArray = passwordArray.push(
-            requestChar[Math.floor(Math.random() * requestChar.length)]
-          );
-        }
-        console.log(passwordArray);
+        var requestChar = requestChar + special;
+        console.log(requestChar);
       }
+
+      //Creating an array based on number of characters user selected
+      var passwordArray = "";
+      //Adding the random generator to select element within the new requested character array
+      for (let i = 0; i < number_base; i++) {
+        passwordArray =
+          passwordArray +
+          requestChar[Math.floor(Math.random() * requestChar.length)];
+      }
+      console.log(passwordArray);
+      var passwordText = document.querySelector("#password");
+      passwordText.innerHTML = passwordArray;
     }
   }
 }
