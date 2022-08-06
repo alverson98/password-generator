@@ -4,9 +4,6 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
 }
 
 // Add event listener to generate button
@@ -24,13 +21,13 @@ function generatePassword() {
       "How many characters do you want? Choose between 8-128."
     );
     // Forcing user to choose 8 through 128
-    if (charCount < 8 || charCount > 128 || charCount === "") {
+    if (charCount === null) {
+      return;
+    } else if (charCount < 8 || charCount > 128 || charCount === "") {
       alert("Please choose a number between 8 and 128.");
       characterNumber();
     } else if (charCount >= 8 && charCount <= 128) {
       charChoice(charCount);
-    } else if (charCount === null) {
-      return;
     } else {
       alert("Please choose a number between 8 and 128.");
       characterNumber();
@@ -74,6 +71,7 @@ function generatePassword() {
       var requestChar = "";
       console.log(number_base);
 
+      // Combining the arrays depending on what the user selects
       if (upperChoice) {
         var requestChar = requestChar + upperCase;
         console.log(requestChar);
@@ -99,6 +97,7 @@ function generatePassword() {
           passwordArray +
           requestChar[Math.floor(Math.random() * requestChar.length)];
       }
+      // Producing the password to be displayed on the webpage
       console.log(passwordArray);
       var passwordText = document.querySelector("#password");
       passwordText.innerHTML = passwordArray;
