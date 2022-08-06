@@ -36,7 +36,7 @@ function generatePassword() {
   characterNumber();
 
   function charChoice(number) {
-    // User prompts if they wany uppercase, lowercase, number, and/or special characters
+    // User prompts if they want uppercase, lowercase, number, and/or special characters
     var upperChoice = confirm(
       "Do you want uppercase letters? Click 'OK' for yes, and 'Cancel' for no."
     );
@@ -65,7 +65,6 @@ function generatePassword() {
       alert("You must select at least one character type. Please try again.");
       characterNumber();
     }
-    // Empty array to create new array with requested character types
 
     function createPassword(number_base) {
       var requestChar = "";
@@ -89,7 +88,7 @@ function generatePassword() {
         console.log(requestChar);
       }
 
-      //Creating an array based on number of characters user selected
+      // Empty array to create new array with requested character types
       var passwordArray = "";
       //Adding the random generator to select element within the new requested character array
       for (let i = 0; i < number_base; i++) {
